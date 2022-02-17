@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: verdana, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+   <body>
+      <h3>
+         <a href = "{{ url_for('show_all') }}">Python Project</a>
+      </h3>
+
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h3>  <a href="{{ url_for('new') }}"><button style="font-family:verdana;">Add Movie</button>
+         </a></h3>
+      
+      <table>
+         <thead>
+            <tr>
+               <th>id</th>
+               <th>Tittle</th>
+               <th>Genre</th>
+               <th>Rating</th>
+               <th>Details</th> 
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for movie in movies %}
+               <tr>
+                  <td>{{ movie.id }}</td>
+                  <td>{{ movie.tittle }}</td>
+                  <td>{{ movie.genre }}</td>
+                  <td>{{ movie.rating }}</td>
+                  <td ><a href="{{ url_for('details', id=movie.id) }}"> Show Details  </a></td> 
+               </tr>
+               
+            {% endfor %}
+
+
+         </tbody>
+      </table>
+
+      <br></br>
+
+      
+      <form action = "{{ ('showMovies') }}" method = "get">
+         <label >Filter exec 18</label><br>
+         <input type = "number" name = "count" placeholder = "count" /><br>
+         <input type = "number" name = "start" placeholder = "start" /><br>
+         <input type = "submit" value = "Submit" /> </form>
+
+
+         <br></br>
+
+      
+         <form action = "{{ ('filterMovies') }}" method = "post">
+            <label >Exec bonus 2</label><br>
+            {%- for category, message in get_flashed_messages(with_categories = true) %}
+            <div class = "alert alert-danger">
+               {{ message }}
+            </div>
+         {%- endfor %}
+         
+            <input type = "text" name = "tittle" placeholder = "tittle" /><br>
+            <input type = "submit" value = "Submit" /> </form>
+
+
+         
+   </body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Movie Details</title>
+
+</head>
+
+<body>
+
+    <h3 style="font-family:verdana;">
+        Movie details
+     </h3>
+
+    <div class="m-4">
+        <table class="list">
+            </thead>
+            <tbody>
+                
+                
+                <ul>
+                  <li style="font-family:verdana;">Title: {{ movie.tittle }} </li>
+                  <li style="font-family:verdana;">Director: {{ movie.director }}</li>
+                  <li style="font-family:verdana;">Genre: {{ movie.genre }}</li>
+                  <li style="font-family:verdana;">Duration: {{ movie.duration }} minutes</li>
+                  <li style="font-family:verdana;">Rating: {{ movie.rating }} </li>
+                </ul>
+ 
+                <h3> <a style="font-family:verdana;" href="{{ url_for('delete', id=movie.id) }}"> <button style="font-family:verdana;"> Delete Movie</button>  </a> </h3>
+                <h3> <a style="font-family:verdana;" href="{{ url_for('update', id=movie.id) }}"> <button style="font-family:verdana;"> Update Movie</button>  </a> </h3>
+
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

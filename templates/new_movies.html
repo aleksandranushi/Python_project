@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h3 style="font-family:verdana;" >Add new moive</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label style="font-family:verdana;"  for = "Title">Tittle</label><br>
+         <input style="font-family:verdana;" type = "text" name = "tittle" placeholder = "tittle" /><br>
+         <label style="font-family:verdana;" for = "Director">Director</label><br>
+         <input style="font-family:verdana;" type = "text" name = "director" placeholder = "director" /><br>
+         <label style="font-family:verdana;" for = "Genre">Genre</label><br>
+         <input style="font-family:verdana;" type = "text" textarea name = "genre" placeholder = "genre" /><br>
+         <label style="font-family:verdana;" for = "duration">Duration</label><br>
+         <input style="font-family:verdana;" type = "number" name = "duration" placeholder = "duration" /><br>
+         <label style="font-family:verdana;" for = "rating">Rating</label><br>
+         <input style="font-family:verdana;" type = "float" name = "rating" placeholder = "rating" /><br>
+         <br>
+         <input type = "submit" value = "Submit" />
+      </form>
+   </body>
+</html>
